@@ -1,0 +1,83 @@
+<div class="game-board">
+  <div class="controls">
+    <div class="slider-row">
+      <label>
+        <div class="slider-label-container">
+          <label class="slider-name-label">Grid Size:</label>
+          <label class="slider-value-label">{{ size() }}x{{ size() }}</label>
+        </div>
+        <mat-slider [disabled]="isRunning()" [max]="200" [min]="20">
+          <input
+            matSliderThumb
+            [value]="size()"
+            (input)="onSizeInputChange($any($event.target).value)"
+            (input)="onSizeInputChange($any($event.target).value)"
+            #slider
+          />
+        </mat-slider>
+      </label>
+
+      <label>
+        <div class="slider-label-container">
+          <label class="slider-name-label">Speed:</label>
+          <label class="slider-value-label">{{ speed() }}</label>
+        </div>
+        <mat-slider [max]="100" [min]="1">
+          <input
+            matSliderThumb
+            [value]="speed()"
+            (input)="changeSpeed($any($event.target).value)"
+            #slider
+          />
+        </mat-slider>
+      </label>
+    </div>
+    <div class="button-row">
+      <button matButton="tonal" (click)="toggleRunning()">
+        {{ isRunning() ? "Stop" : "Start" }}
+      </button>
+      <button matButton="tonal" (click)="step()" [disabled]="isRunning()">
+        Step
+      </button>
+      <button matButton="tonal" (click)="clearGrid()">Clear</button>
+      <button
+        matButton="tonal"
+        (click)="randomizeGrid()"
+        [disabled]="isRunning()"
+      >
+        Randomize
+      </button>
+    </div>
+    @if (isLoggedIn()) {
+      <div class="button-row">
+        <button
+          matButton="tonal"
+          (click)="savePreset()"
+          [disabled]="isRunning()"
+        >
+          Save Preset
+        </button>
+        <button
+          matButton="tonal"
+          (click)="loadPreset()"
+          [disabled]="isRunning()"
+        >
+          Load Preset
+        </button>
+      </div>
+    }
+  </div>
+  <div class="board" [style.--rows]="size()" [style.--cols]="size()">
+    @for (row of grid; track $index; let i = $index) {
+      <div class="row">
+        @for (cell of row; track $index; let j = $index) {
+          <div
+            class="cell"
+            [class.alive]="cell"
+            (click)="toggleCell(i, j)"
+          ></div>
+        }
+      </div>
+    }
+  </div>
+</div>

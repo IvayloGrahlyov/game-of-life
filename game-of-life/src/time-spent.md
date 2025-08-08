@@ -1,0 +1,4 @@
+- 00:00 - 01:45 - general AI research, Angular documentation, local setup and initial page
+- 01:45 - 03:00 - main logic done
+- 03:00 - 04:00 - I've fiddled a lot with HTML/CSS
+- 04:00 - 04:30 - refactor game logic in a separate service

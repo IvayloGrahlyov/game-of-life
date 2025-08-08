@@ -1,0 +1,18 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+}
+.title {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  text-align: center;
+  font-size: 30px;
+  margin-left: 20px;
+}
+.buttons-row {
+  align-content: center;
+  row-gap: 10px;
+}
+
+.mat-mdc-button-base {
+  margin: 8px 8px 8px 0;
+}

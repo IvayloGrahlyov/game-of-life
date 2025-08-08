@@ -1,0 +1,19 @@
+<h2 mat-dialog-title class="dialog-title">Select a Preset:</h2>
+
+<div mat-dialog-content class="dialog-content">
+  <mat-form-field appearance="fill" style="width: 100%">
+    <mat-label>Preset</mat-label>
+    <mat-select
+      [ngModel]="selectedPreset()"
+      (ngModelChange)="selectedPreset.set($event)"
+    >
+      @for (preset of presets(); track preset._id) {
+        <mat-option [value]="preset">{{ preset.name }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions align="end" class="actions">
+  <button mat-button (click)="close()">Cancel</button>
+  <button mat-flat-button color="primary" (click)="select()">Select</button>
+</div>

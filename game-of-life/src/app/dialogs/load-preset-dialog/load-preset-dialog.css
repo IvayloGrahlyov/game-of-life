@@ -1,0 +1,18 @@
+.mat-mdc-dialog-surface {
+  padding: 20px;
+}
+
+.dialog-content {
+  width: 400px;
+}
+
+.dialog-title {
+  margin: 20px;
+}
+
+.actions {
+  margin: 10px 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}

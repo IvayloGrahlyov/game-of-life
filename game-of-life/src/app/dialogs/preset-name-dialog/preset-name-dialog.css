@@ -1,0 +1,30 @@
+.mat-mdc-dialog-surface {
+  padding: 20px;
+}
+
+.dialog-content {
+  width: 400px;
+}
+
+.mat-mdc-form-field {
+  margin: 10px 20px;
+  width: 90%;
+}
+
+.dialog-title {
+  margin: 20px;
+}
+
+.error {
+  margin: 0px 20px;
+  color: crimson;
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.actions {
+  margin: 10px 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}

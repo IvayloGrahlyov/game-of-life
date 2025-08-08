@@ -1,0 +1,68 @@
+<h2 mat-dialog-title class="dialog-title">
+  {{ currentMode() === "login" ? "Sign In" : "Sign Up" }}
+</h2>
+<div mat-dialog-content class="dialog-content">
+  <form (submit)="submit()">
+    @if (isModeRegister() && isUsernameTouched() && !isUsernameValid()) {
+      <div class="error">
+        Username length must be between 6 and 30 characters.
+      </div>
+    }
+    <mat-form-field>
+      <mat-label>Username</mat-label>
+      <input matInput [(ngModel)]="username" name="username" required />
+    </mat-form-field>
+
+    @if (isModeRegister() && isPasswordTouched() && !isPasswordValid()) {
+      <div class="error">
+        Password lenght must be between 8 and 64 characters.
+      </div>
+    }
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input
+        matInput
+        type="password"
+        [(ngModel)]="password"
+        name="password"
+        required
+      />
+    </mat-form-field>
+
+    @if (isModeRegister()) {
+      @if (isConfirmPasswordTouched() && !isConfirmPasswordValid()) {
+        <div class="error">Passwords must match.</div>
+      }
+      <mat-form-field>
+        <mat-label>Repeat Password</mat-label>
+        <input
+          matInput
+          type="password"
+          [(ngModel)]="confirmPassword"
+          name="confirmPassword"
+          required="isModeRegister()"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>First Name</mat-label>
+        <input matInput [(ngModel)]="firstName" name="firstName" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Last Name</mat-label>
+        <input matInput [(ngModel)]="lastName" name="lastName" />
+      </mat-form-field>
+    }
+  </form>
+</div>
+@if (errorState()) {
+  <div class="error">{{ errorState() }}</div>
+}
+<div mat-dialog-actions align="end" class="actions">
+  <button mat-button (click)="switchMode()">
+    {{ currentMode() === "login" ? "Switch to Sign Up" : "Switch to Sign In" }}
+  </button>
+  <button mat-button (click)="close()">Cancel</button>
+  <button mat-flat-button color="primary" (click)="submit()">
+    {{ currentMode() === "login" ? "Login" : "Register" }}
+  </button>
+</div>

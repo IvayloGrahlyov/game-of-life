@@ -1,0 +1,32 @@
+services:
+  mongodb:
+    image: mongo:7
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    volumes:
+      - mongo-data:/data/db
+
+  backend:
+    build:
+      context: ./game-of-life-api
+    ports:
+      - "3030:3030"
+    environment:
+      MONGO_URI: mongodb://root:example@mongo:27017
+    depends_on:
+      - mongodb
+
+  frontend:
+    build:
+      context: ./game-of-life
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+volumes:
+  mongo-data:

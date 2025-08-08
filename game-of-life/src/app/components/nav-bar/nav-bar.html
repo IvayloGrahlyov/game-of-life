@@ -1,0 +1,13 @@
+<nav class="navbar">
+  <h1 class="title">Game of Life</h1>
+
+  <div class="buttons-row">
+    @if (isLoggedIn()) {
+      <button matButton="tonal" (click)="openProfile()">Profile</button>
+      <button matButton="tonal" (click)="signOut()">Sign out</button>
+    } @else {
+      <button matButton="tonal" (click)="openLogin('login')">Sign In</button>
+      <button matButton="tonal" (click)="openLogin('register')">Sign Up</button>
+    }
+  </div>
+</nav>
