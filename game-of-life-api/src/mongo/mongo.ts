@@ -3,6 +3,7 @@ import { ConfigService } from '@nestjs/config';
 
 export const MongoProvider = {
   provide: 'MONGO_CLIENT',
+  inject: [ConfigService],
   useFactory: async (configService: ConfigService) => {
     const uri =
       configService.get<string>('MONGO_URI') ||
